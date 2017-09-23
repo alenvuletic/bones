@@ -3,7 +3,14 @@
  */
 
 /* ----- Charset ----- */
-@charset "UTF-8";
+@charset 'UTF-8';
+
+/* ----- Variables ----- */
+@import 'variables';
 
 /* ----- Generic ----- */
-@import "generic/reset";
+@import 'generic/reset';
+
+/* ----- Elements ----- */
+/* ----- Utilities ----- */
+/* ----- Components ----- */

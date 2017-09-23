@@ -1,0 +1,21 @@
+{
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alenvuletic/crux"
+  },
+  "license": "MIT",
+  "scripts": {
+    "gulp": "node ./node_modules/gulp/bin/gulp.js"
+  },
+  "devDependencies": {
+    "gulp": "git+https://git@github.com/gulpjs/gulp.git#4.0",
+    "gulp-autoprefixer": "^4.0.0",
+    "gulp-nunjucks-render": "^2.2.1",
+    "gulp-sass": "^2.2.0",
+    "gulp-sourcemaps": "^2.6.1",
+    "gulp-util": "^3.0.8"
+  },
+  "dependencies": {
+    "del": "^3.0.0"
+  }
+}
