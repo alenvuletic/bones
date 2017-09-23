@@ -1,0 +1,331 @@
+/**
+ * Generic (generic/_reset.scss)
+ *
+ * Collection of element-specific CSS changes in a single file. Elegant,
+ * consistent and simple baseline to build upon.
+ *
+ * 1. All elements and document
+ * 2. Body
+ * 3. Horizontal rule
+ * 4. Typography
+ * 5. Links
+ * 6. Images and media
+ * 7. Tables
+ * 8. Forms
+ */
+
+/* ----- All elements and document ----- */
+/**
+ * 1. Change from `box-sizing: content-box` so that `width` is not affected by
+ *    `padding` or `border`.
+ * 2. Prevent adjustments of font size after orientation changes in IE on
+ *    Windows Phone and in iOS.
+ * 3. Setting @viewport causes scrollbars to overlap content in IE11 and Edge,
+ *    so we force a non-overlapping, non-auto-hiding scrollbar to counteract.
+ * 4. Change the default tap highlight to be completely transparent in iOS.
+ */
+html {
+	font-size: 16px;
+	box-sizing: border-box; /* 1 */
+	-webkit-text-size-adjust: 100%; /* 2 */
+	-ms-text-size-adjust: 100%; /* 2 */
+	-ms-overflow-style: scrollbar; /* 3 */
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0); /* 4 */
+}
+
+*,
+*::before,
+*::after {
+	box-sizing: inherit; /* 1 */
+}
+
+/**
+ * IE10+ doesn't honor `<meta name="viewport">` in some cases.
+ */
+@at-root {
+	@-ms-viewport {
+		width: device-width;
+	}
+}
+
+/* ----- Body ----- */
+/**
+ * Remove the margin and set base typography styles for all elements.
+ */
+body {
+	margin: 0;
+	font-family: $font-family-base;
+	font-size: $font-size-base;
+	line-height: $line-height-base;
+	font-weight: $font-weight-base;
+	color: $color-base;
+}
+
+/* ----- Horizontal rule ----- */
+/**
+ * 1. Add the correct box sizing in Firefox.
+ * 2. Show the overflow in Edge and IE.
+ */
+hr {
+	box-sizing: content-box; /* 1 */
+	height: 0; /* 1 */
+	overflow: visible; /* 2 */
+}
+
+/* ----- Typography ----- */
+/**
+ * Apply a consistent margin strategy.
+ */
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+ol,
+ul,
+label,
+figure,
+blockquote {
+	margin: 0 0 $spacing-base 0;
+}
+
+/**
+ * Remove `margin-bottom` on lists inside lists.
+ */
+ol,
+ul {
+	ol,
+	ul {
+		margin-bottom: 0;
+	}
+}
+
+/**
+ * Add the correct font weight in Chrome, Edge, and Safari.
+ */
+b,
+strong {
+	font-weight: bolder;
+}
+
+/**
+ * Add the correct font size in all browsers.
+ */
+small {
+	font-size: 80%;
+}
+
+/**
+ * Prevent `sub` and `sup` elements from affecting the line height in all
+ * browsers.
+ */
+sub,
+sup {
+	position: relative;
+	font-size: 75%;
+	line-height: 0;
+	vertical-align: baseline;
+}
+
+sub {
+	bottom: -.25em;
+}
+
+sup {
+	top: -.5em;
+}
+
+/* ----- Links ----- */
+/**
+ * 1. Remove the gray background on active links in IE 10.
+ * 2. Remove gaps in links underline in iOS 8+ and Safari 8+.
+ */
+a {
+	color: $link-color;
+	text-decoration: $link-decoration;
+	background-color: transparent; /* 1 */
+	-webkit-text-decoration-skip: objects; /* 2 */
+
+	&:hover {
+		color: $link-hover-color;
+		text-decoration: $link-hover-decoration;
+	}
+}
+
+/* ----- Images and media ----- */
+/**
+ * 1. Add proper vertical alignment to avoid unwanted spacing above and below
+ *    image.
+ * 2. Remove the border on images inside links in IE 10-.
+ */
+img {
+	vertical-align: top; /* 1 */
+	border-style: none; /* 2 */
+}
+
+/**
+ * Make all media elements responsive.
+ */
+img,
+embed,
+iframe,
+object,
+audio,
+video {
+	height: auto;
+	max-width: 100%;
+}
+
+/**
+ * Remove border from iframe elements.
+ */
+iframe {
+	border: 0;
+}
+
+/* ----- Tables ----- */
+/**
+ * Prevent double borders.
+ */
+table {
+	border-collapse: collapse;
+}
+
+/**
+ * Reset text alignment in table cells.
+ */
+td, th {
+	text-align: left;
+}
+
+/* ----- Forms ----- */
+/**
+ * Remove the margin in Firefox and Safari.
+ */
+input,
+button,
+select,
+optgroup,
+textarea {
+	margin: 0;
+}
+
+/**
+ * Show the overflow in Edge.
+ */
+button,
+input {
+	overflow: visible;
+}
+
+/**
+ * Remove the inheritance of text transform in Firefox.
+ */
+button,
+select {
+	text-transform: none;
+}
+
+/**
+ * Correct the inability to style clickable types in iOS and Safari.
+ */
+button,
+[type='reset'],
+[type='submit'] {
+	-webkit-appearance: button;
+}
+
+/**
+ * Remove inner border and padding from Firefox.
+ */
+button,
+[type='button'],
+[type='reset'],
+[type='submit'] {
+	&::-moz-focus-inner {
+		padding: 0;
+		border-style: none;
+	}
+}
+
+/**
+ * 1. Add the correct box sizing in IE 10-.
+ * 2. Remove the padding in IE 10-.
+ */
+input[type='radio'],
+input[type='checkbox'] {
+	box-sizing: border-box; /* 1 */
+	padding: 0; /* 2 */
+}
+
+/**
+ * Remove the default appearance of temporal inputs to avoid a Mobile Safari
+ * bug where setting a custom line-height prevents text from being vertically
+ * centered within the input.
+ */
+input[type='date'],
+input[type='time'],
+input[type='datetime-local'],
+input[type='month'] {
+	-webkit-appearance: listbox;
+}
+
+/**
+ * 1. Remove the default vertical scrollbar in IE.
+ * 2. Textareas should really only resize vertically so they don't break their
+ *    (horizontal) containers.
+ */
+textarea {
+	overflow: auto; /* 1 */
+	resize: vertical; /* 2 */
+}
+
+/**
+ * 1. Browsers set a default `min-width: min-content;` on fieldsets, unlike
+ *    e.g. `<div>`s, which have `min-width: 0;` by default. So we reset that to
+ *    ensure fieldsets behave more like a standard block element.
+ * 2. Reset the default outline behavior of fieldsets so they don't affect page
+ *    layout.
+ */
+fieldset {
+	min-width: 0; /* 1 */
+	padding: 0; /* 2 */
+	margin: 0; /* 2 */
+	border: 0; /* 2 */
+}
+
+/**
+ * Correct the cursor style of increment and decrement buttons in Chrome.
+ */
+[type='number'] {
+	&::-webkit-inner-spin-button,
+	&::-webkit-outer-spin-button {
+		height: auto;
+	}
+}
+
+/**
+ * 1. This overrides the extra rounded corners on search inputs in iOS.
+ * 2. Correct the outline style in Safari.
+ * 3. Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
+ */
+[type='search'] {
+	outline-offset: -2px; /* 1 */
+	-webkit-appearance: none; /* 2 */
+
+	&::-webkit-search-cancel-button,
+	&::-webkit-search-decoration {
+		-webkit-appearance: none; /* 3 */
+	}
+}
+
+/**
+ * 1. Change font properties to `inherit` in Safari.
+ * 2. Correct the inability to style clickable types in iOS and Safari.
+ */
+::-webkit-file-upload-button {
+	font: inherit; /* 1 */
+	-webkit-appearance: button; /* 2 */
+}
