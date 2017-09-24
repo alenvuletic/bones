@@ -3,7 +3,7 @@
  */
 
 /* ----- Generic ----- */
-$font-family-base: 16px !default;
+$font-family-base: Arial, sans-serif !default;
 $font-size-base: 16px !default;
 $font-weight-base: normal !default;
 $line-height-base: 1.5em !default;
@@ -11,3 +11,9 @@ $color-base: #000;
 
 /* ----- Spacing ----- */
 $spacing-base: 1.25rem;
+
+/* ----- Typography ----- */
+$link-color: #000;
+$link-hover-color: #000;
+$link-decoration: none;
+$link-hover-decoration: none;
