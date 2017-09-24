@@ -110,7 +110,10 @@ rules:
   nesting-depth: 0
   property-sort-order: 0
   pseudo-element: 2
-  quotes: 2
+  quotes:
+    - 2
+    -
+      style: 'double'
   shorthand-values: 0
   url-quotes: 2
   variable-for-property: 0
