@@ -232,8 +232,8 @@ select {
  * Correct the inability to style clickable types in iOS and Safari.
  */
 button,
-[type='reset'],
-[type='submit'] {
+[type="reset"],
+[type="submit"] {
 	-webkit-appearance: button;
 }
 
@@ -241,9 +241,9 @@ button,
  * Remove inner border and padding from Firefox.
  */
 button,
-[type='button'],
-[type='reset'],
-[type='submit'] {
+[type="button"],
+[type="reset"],
+[type="submit"] {
 	&::-moz-focus-inner {
 		padding: 0;
 		border-style: none;
@@ -254,8 +254,8 @@ button,
  * 1. Add the correct box sizing in IE 10-.
  * 2. Remove the padding in IE 10-.
  */
-input[type='radio'],
-input[type='checkbox'] {
+input[type="radio"],
+input[type="checkbox"] {
 	box-sizing: border-box; /* 1 */
 	padding: 0; /* 2 */
 }
@@ -265,10 +265,10 @@ input[type='checkbox'] {
  * bug where setting a custom line-height prevents text from being vertically
  * centered within the input.
  */
-input[type='date'],
-input[type='time'],
-input[type='datetime-local'],
-input[type='month'] {
+input[type="date"],
+input[type="time"],
+input[type="datetime-local"],
+input[type="month"] {
 	-webkit-appearance: listbox;
 }
 
@@ -299,7 +299,7 @@ fieldset {
 /**
  * Correct the cursor style of increment and decrement buttons in Chrome.
  */
-[type='number'] {
+[type="number"] {
 	&::-webkit-inner-spin-button,
 	&::-webkit-outer-spin-button {
 		height: auto;
@@ -311,7 +311,7 @@ fieldset {
  * 2. Correct the outline style in Safari.
  * 3. Remove the inner padding and cancel buttons in Chrome and Safari on macOS.
  */
-[type='search'] {
+[type="search"] {
 	outline-offset: -2px; /* 1 */
 	-webkit-appearance: none; /* 2 */
 
