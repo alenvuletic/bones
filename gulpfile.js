@@ -5,22 +5,27 @@ const gulp = require( 'gulp' ),
 		autoprefixer = require( 'gulp-autoprefixer' ),
 		nunjucksRender = require( 'gulp-nunjucks-render' ),
 		del = require( 'del' ),
+		combineMq = require( 'gulp-combine-mq' ),
+		imagemin = require( 'gulp-imagemin' ),
+		imageminJpegRecompress = require( 'imagemin-jpeg-recompress' ),
+		imageminPngquant = require( 'imagemin-pngquant' ),
 		filesToWatch = [
 			'src/assets/sass/**/*.scss',
 			'src/*.html',
 		];
 
 // Build SASS
-gulp.task( 'build:sass', function( done ) {
+gulp.task( 'build:sass', function() {
 	'use strict';
 
 	return gulp.src( 'src/assets/sass/**/*.scss' )
-		.pipe( sourcemaps.init() )
+		.pipe(
+			sourcemaps.init()
+		)
 		.pipe(
 			sass( {
 				outputStyle: 'compressed',
-			} )
-			.on( 'error', gutil.log )
+			} ).on( 'error', gutil.log )
 		)
 		.pipe(
 			autoprefixer( {
@@ -37,34 +42,30 @@ gulp.task( 'build:sass', function( done ) {
 				flexbox: 'no-2009',
 			} )
 		)
-		.pipe( sourcemaps.write() )
+		.pipe(
+			combineMq( {
+				beautify: false,
+			} )
+		)
+		.pipe(
+			sourcemaps.write()
+		)
 		.pipe(
 			gulp.dest( 'pub/assets/css/' )
-		)
-		.on( 'end', done );
+		);
 } );
 
 // Build nunjucks
 gulp.task( 'build:nunjucks', function() {
 	'use strict';
 
-	return gulp.src( 'src/*.html' )
-		.pipe( nunjucksRender() )
+	return gulp.src( 'src/**/*.html' )
+		.pipe(
+			nunjucksRender().on( 'error', gutil.log )
+		)
 		.pipe(
 			gulp.dest( 'pub/' )
 		);
-} );
-
-// Clean
-gulp.task( 'clean', function( done ) {
-	'use strict';
-
-	return del( [
-		'pub/',
-	] )
-	.then( function() {
-		done();
-	} );
 } );
 
 // Copy assets
@@ -75,31 +76,73 @@ gulp.task( 'copy:assets', function() {
 		'src/assets/**/*',
 		'!src/assets/sass',
 		'!src/assets/sass/**',
+		'!src/assets/images',
+		'!src/assets/images/**',
 	] )
-		.pipe( gulp.dest( 'pub/assets' ) );
+		.pipe(
+			gulp.dest( 'pub/assets' )
+		);
 } );
 
-// Default (Build)
+// Compress images
+gulp.task( 'compress:images', function() {
+	'use strict';
+
+	return gulp.src( 'src/assets/images/**/*' )
+		.pipe(
+			imagemin( [
+				imageminJpegRecompress( {
+					max: 80,
+				} ),
+				imageminPngquant( {
+					quality: 85,
+				} ),
+				imagemin.svgo(),
+			], { verbose: true } ).on( 'error', gutil.log )
+		)
+		.pipe(
+			gulp.dest( 'pub/assets/images' )
+		);
+} );
+
+// Build assets
 gulp.task(
-	'default',
-	gulp.series( [
-		'clean',
-		'build:sass',
-		'build:nunjucks',
+	'build:assets',
+	gulp.parallel(
 		'copy:assets',
-	] )
+		'compress:images'
+	)
 );
 
+// Clean
+gulp.task( 'clean', function() {
+	'use strict';
+
+	return del( [
+		'pub/',
+	] );
+} );
+
 // Watch
-gulp.task( 'watch', function( done ) {
+gulp.task( 'watch', function() {
 	'use strict';
 
 	gulp.watch(
 		filesToWatch,
-		gulp.series( [
-			'default',
-		] )
+		gulp.parallel(
+			'build:sass',
+			'build:nunjucks'
+		)
 	);
-
-	done();
 } );
+
+// Default (Build everything)
+gulp.task(
+	'default',
+	gulp.series(
+		'clean',
+		'build:sass',
+		'build:nunjucks',
+		'build:assets'
+	)
+);
