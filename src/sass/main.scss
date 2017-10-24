@@ -1,0 +1,14 @@
+/* =============================================================================
+   Main
+   ========================================================================== */
+
+/* ----- Charset ----- */
+@charset "UTF-8";
+
+/* ----- Settings ----- */
+@import "settings";
+
+/* ----- Generic ----- */
+@import "generic/generic.box-sizing";
+@import "generic/generic.normalize";
+@import "generic/generic.reset";

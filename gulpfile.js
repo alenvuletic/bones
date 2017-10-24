@@ -10,15 +10,15 @@ const gulp = require( 'gulp' ),
 		imageminJpegRecompress = require( 'imagemin-jpeg-recompress' ),
 		imageminPngquant = require( 'imagemin-pngquant' ),
 		filesToWatch = [
-			'src/assets/sass/**/*.scss',
-			'src/*.html',
+			'src/sass/**/*.scss',
+			'src/templates/**/*.html',
 		];
 
 // Build SASS
 gulp.task( 'build:sass', function() {
 	'use strict';
 
-	return gulp.src( 'src/assets/sass/**/*.scss' )
+	return gulp.src( 'src/sass/**/*.scss' )
 		.pipe(
 			sourcemaps.init()
 		)
@@ -51,7 +51,7 @@ gulp.task( 'build:sass', function() {
 			sourcemaps.write()
 		)
 		.pipe(
-			gulp.dest( 'pub/assets/css/' )
+			gulp.dest( 'dist/css' )
 		);
 } );
 
@@ -59,12 +59,12 @@ gulp.task( 'build:sass', function() {
 gulp.task( 'build:nunjucks', function() {
 	'use strict';
 
-	return gulp.src( 'src/**/*.html' )
+	return gulp.src( 'src/templates/**/*.html' )
 		.pipe(
 			nunjucksRender().on( 'error', gutil.log )
 		)
 		.pipe(
-			gulp.dest( 'pub/' )
+			gulp.dest( 'dist' )
 		);
 } );
 
@@ -73,14 +73,16 @@ gulp.task( 'copy:assets', function() {
 	'use strict';
 
 	return gulp.src( [
-		'src/assets/**/*',
-		'!src/assets/sass',
-		'!src/assets/sass/**',
-		'!src/assets/images',
-		'!src/assets/images/**',
+		'src/**/*',
+		'!src/sass',
+		'!src/sass/**',
+		'!src/images',
+		'!src/images/**',
+		'!src/templates',
+		'!src/templates/**',
 	] )
 		.pipe(
-			gulp.dest( 'pub/assets' )
+			gulp.dest( 'dist' )
 		);
 } );
 
@@ -88,7 +90,7 @@ gulp.task( 'copy:assets', function() {
 gulp.task( 'compress:images', function() {
 	'use strict';
 
-	return gulp.src( 'src/assets/images/**/*' )
+	return gulp.src( 'src/images/**/*' )
 		.pipe(
 			imagemin( [
 				imageminJpegRecompress( {
@@ -101,25 +103,16 @@ gulp.task( 'compress:images', function() {
 			], { verbose: true } ).on( 'error', gutil.log )
 		)
 		.pipe(
-			gulp.dest( 'pub/assets/images' )
+			gulp.dest( 'dist/images' )
 		);
 } );
-
-// Build assets
-gulp.task(
-	'build:assets',
-	gulp.parallel(
-		'copy:assets',
-		'compress:images'
-	)
-);
 
 // Clean
 gulp.task( 'clean', function() {
 	'use strict';
 
 	return del( [
-		'pub/',
+		'dist',
 	] );
 } );
 
@@ -143,6 +136,7 @@ gulp.task(
 		'clean',
 		'build:sass',
 		'build:nunjucks',
-		'build:assets'
+		'copy:assets',
+		'compress:images'
 	)
 );
