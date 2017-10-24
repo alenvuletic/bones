@@ -1,4 +1,7 @@
 {
+    "ignoreFiles": [
+        "./src/sass/generic/_generic.normalize.scss",
+    ],
     "rules": {
         "at-rule-empty-line-before": [ "always", {
             except: [
