@@ -18,12 +18,23 @@
 
 /* ----- Generic ----- */
 /**
+ * Tools
+ */
+
+@import "tools/tools.breakpoints";
+
+/**
  * Generic
  */
 
 @import "generic/generic.box-sizing";
 @import "generic/generic.normalize";
 @import "generic/generic.reset";
+
+/**
+ * Components
+ */
+
 /**
  * Utilities
  */
