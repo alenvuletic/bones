@@ -2,21 +2,18 @@
    Main
    ========================================================================== */
 
-/* ----- Charset ----- */
 /**
  * Charset
  */
 
 @charset "UTF-8";
 
-/* ----- Settings ----- */
 /**
  * Settings
  */
 
 @import "settings";
 
-/* ----- Generic ----- */
 /**
  * Tools
  */
@@ -31,6 +28,11 @@
 @import "generic/generic.normalize";
 @import "generic/generic.reset";
 
+/**
+ * Elements
+ */
+
+@import "elements/elements.images";
 /**
  * Components
  */
