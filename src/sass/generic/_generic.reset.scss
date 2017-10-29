@@ -2,11 +2,12 @@
    Reset
    ========================================================================== */
 
+/* stylelint-disable selector-list-comma-newline-after */
+
 /**
  * A very simple reset that sits on top of Normalize.css.
  */
 
-/* stylelint-disable selector-list-comma-newline-after */
 body,
 h1, h2, h3, h4, h5, h6,
 blockquote, p, pre,
@@ -17,7 +18,22 @@ fieldset, legend {
 	margin: 0;
 	padding: 0;
 }
-/* stylelint-enable selector-list-comma-newline-after */
+
+/**
+ * Always declare margins in the same direction:
+ * csswizardry.com/2012/06/single-direction-margin-declarations
+ */
+
+address,
+h1, h2, h3, h4, h5, h6,
+blockquote, p, pre,
+dl, ol, ul,
+figure,
+hr,
+table,
+fieldset {
+	margin-bottom: $spacer-base;
+}
 
 /**
  * Remove trailing margins from nested lists.
