@@ -1,0 +1,43 @@
+/* =============================================================================
+   Display
+   ========================================================================== */
+
+/* stylelint-disable declaration-no-important */
+
+@each $breakpoint-key, $breakpoint-value in $breakpoints {
+	@if $breakpoint-key == xs {
+		.u-d-none {
+			display: none !important;
+		}
+
+		.u-d-block {
+			display: block !important;
+		}
+
+		.u-d-flex {
+			display: flex !important;
+		}
+
+		.u-d-inline {
+			display: inline !important;
+		}
+	} @else {
+		@media (min-width: $breakpoint-value) {
+			.u-d-none-#{$breakpoint-key} {
+				display: none !important;
+			}
+
+			.u-d-block-#{$breakpoint-key} {
+				display: block !important;
+			}
+
+			.u-d-flex-#{$breakpoint-key} {
+				display: flex !important;
+			}
+
+			.u-d-inline-#{$breakpoint-key} {
+				display: inline !important;
+			}
+		}
+	}
+}
