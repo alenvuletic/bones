@@ -32,6 +32,7 @@
  * Elements
  */
 
+@import "elements/elements.headings";
 @import "elements/elements.images";
 /**
  * Components
@@ -41,4 +42,5 @@
  * Utilities
  */
 
+@import "utilities/utilities.headings";
 @import "utilities/utilities.spacing";
