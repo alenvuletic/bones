@@ -1,0 +1,21 @@
+/* =============================================================================
+   Colors
+   ========================================================================== */
+
+/* stylelint-disable declaration-no-important */
+
+/**
+ * Convey meaning through color with a handful of color utility classes.
+ */
+
+@each $key, $value in $colors {
+	// Text colors
+	.u-color-#{$key} {
+		color: $value !important;
+	}
+
+	// Background colors
+	.u-bg-#{$key} {
+		background-color: $value !important;
+	}
+}
