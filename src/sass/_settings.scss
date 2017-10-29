@@ -2,8 +2,26 @@
    Settings
    ========================================================================== */
 
+
+/**
+ * Breakpoints
+ */
+
+$breakpoints: (
+	"xs": 0,
+	"sm": 576px,
+	"md": 768px,
+	"lg": 992px,
+	"xl": 1200px
+) !default;
+
 /**
  * Spacing
  */
 
 $spacer-base: 1.25rem !default;
+
+$spacers: (
+	"0": 0,
+	"1": .625rem,
+) !default;

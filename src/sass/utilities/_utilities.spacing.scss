@@ -1,0 +1,99 @@
+/* =============================================================================
+   Spacing
+   ========================================================================== */
+
+/* stylelint-disable declaration-no-important */
+
+/**
+ * Margin and padding
+ */
+
+@each $breakpoint-key, $breakpoint-value in $breakpoints {
+	@if $breakpoint-key == xs {
+		.u-mr-auto {
+			margin-right: auto !important;
+		}
+
+		.u-ml-auto {
+			margin-left: auto !important;
+		}
+
+		@each $key, $value in $spacers {
+			.u-mt-#{$key} {
+				margin-top: $value !important;
+			}
+
+			.u-mr-#{$key} {
+				margin-right: $value !important;
+			}
+
+			.u-mb-#{$key} {
+				margin-bottom: $value !important;
+			}
+
+			.u-ml-#{$key} {
+				margin-left: $value !important;
+			}
+
+			.u-pt-#{$key} {
+				padding-top: $value !important;
+			}
+
+			.u-pr-#{$key} {
+				padding-right: $value !important;
+			}
+
+			.u-pb-#{$key} {
+				padding-bottom: $value !important;
+			}
+
+			.u-pl-#{$key} {
+				padding-left: $value !important;
+			}
+		}
+	} @else {
+		@media (min-width: $breakpoint-value) {
+			.u-mr-auto-#{$breakpoint-key} {
+				margin-right: auto !important;
+			}
+
+			.u-ml-auto-#{$breakpoint-key} {
+				margin-left: auto !important;
+			}
+
+			@each $key, $value in $spacers {
+				.u-mt-#{$key}-#{$breakpoint-key} {
+					margin-top: $value !important;
+				}
+
+				.u-mr-#{$key}-#{$breakpoint-key} {
+					margin-right: $value !important;
+				}
+
+				.u-mb-#{$key}-#{$breakpoint-key} {
+					margin-bottom: $value !important;
+				}
+
+				.u-ml-#{$key}-#{$breakpoint-key} {
+					margin-left: $value !important;
+				}
+
+				.u-pt-#{$key}-#{$breakpoint-key} {
+					padding-top: $value !important;
+				}
+
+				.u-pr-#{$key}-#{$breakpoint-key} {
+					padding-right: $value !important;
+				}
+
+				.u-pb-#{$key}-#{$breakpoint-key} {
+					padding-bottom: $value !important;
+				}
+
+				.u-pl-#{$key}-#{$breakpoint-key} {
+					padding-left: $value !important;
+				}
+			}
+		}
+	}
+}
