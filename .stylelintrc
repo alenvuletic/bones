@@ -115,7 +115,6 @@
         "selector-no-vendor-prefix": true,
         "value-no-vendor-prefix": true,
         "declaration-no-important": true,
-        "max-line-length": 80,
         "at-rule-no-unknown": true,
         "block-no-empty": true,
         "color-no-invalid-hex": true,

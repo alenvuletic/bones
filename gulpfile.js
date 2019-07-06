@@ -40,12 +40,12 @@ gulp.task( 'build:sass', function() {
 					'Opera >= 30',
 				],
 				flexbox: 'no-2009',
-			} )
+			} ).on( 'error', gutil.log )
 		)
 		.pipe(
 			combineMq( {
 				beautify: false,
-			} )
+			} ).on( 'error', gutil.log )
 		)
 		.pipe(
 			sourcemaps.write()
